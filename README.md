@@ -1,54 +1,55 @@
 # Fab Content Downloader
 
-**中文** | [English](README.en.md)
+**English** | [中文](README.zh.md)
 
-> ⚠️ AI Slope
->
-> 这是个纯 Vibe、低维护的 throw-away 项目。它不是 Epic Games 或 Fab 的官方产品，不会上架 Chrome Web Store，也不保证持续更新、兼容性或技术支持。
->
-> Use at your own risk.
->
-> 只下载你有权访问的内容。账号、数据、许可证、平台条款和本地文件风险由使用者自行判断和承担。
->
-> 有任何疑问，让你的 Ai 看 [SPECS.md](SPECS.md)。
+Download Unreal Engine assets you own from Fab without installing the Epic Games Launcher.
 
-![image-example](./images/page-example.webp)
+![Fab Content Downloader library page](images/page-example.webp)
 
-## 它是做什么的？
+## Requirements
 
-有相当一部分 UE 内容是无法在 Fab 网页下载的。你需要装一个不知道哪天作妖的 Epic games launcher，装上特定版本的引擎，创建一个特定版本的项目，仅仅为了下载一个资产包。也许 Epic 觉得我们都是傻子，不知道该下哪个版本。
+- Desktop Chrome 103 or newer.
+- An Epic Games/Fab account that owns the content you want to download.
+- Enough disk space and memory for the download.
+- A tool that can extract `.tar` archives.
 
-Anyway，把这个插件装到你的 chrome，你可以浏览 Fab UE 库中的内容并选择任意版本下载到本地。
+The Epic Games Launcher and Unreal Engine are not required.
 
-## 依赖项
+## Install
 
-- 桌面版 Chrome 103 或更高版本。
-- 一个能够正常登录、并且已经拥有相关内容的 Epic Games/Fab 账号。
-- 足够保存下载结果的磁盘空间和可用内存。
-- 能够解压 `.tar` 文件的工具。
+There is no Chrome Web Store listing. Install the extension manually:
 
-不需要安装 Epic Games Launcher 或 Unreal Engine。
+1. Download or clone this repository.
+2. Open `chrome://extensions` in Chrome.
+3. Enable **Developer mode**.
+4. Click **Load unpacked** and select the repository directory containing `manifest.json`.
+5. Optionally pin the extension to the toolbar.
 
-## 怎么用
+After updating the files, reload the extension from `chrome://extensions`.
 
-### 安装
+## Usage
 
-1. 下载并解压完整项目，确认 `manifest.json` 位于目录根部。
-2. 在 Chrome 打开 `chrome://extensions/`。
-3. 打开右上角的 **Developer mode**。
-4. 点击 **Load unpacked**，选择包含 `manifest.json` 的目录。
-5. 可选：将扩展固定到工具栏。
+1. Sign in to [Fab](https://www.fab.com/) in Chrome.
+2. Open the extension and click **Login with Epic Games**.
+3. Click **Open Library** after authentication completes.
+4. Find an asset and select the version you need.
+5. Start the download and choose a local destination when prompted.
+6. Inspect and extract the resulting `.tar` archive.
 
-本项目没有 Chrome Web Store 版本。更新时请替换完整扩展目录，然后在 `chrome://extensions/` 中重新加载扩展。
+## Troubleshooting and Known Limitations
 
-### 下载
+- If authentication or the library page stops responding, reload the extension at `chrome://extensions` and sign in again.
+- Downloads can use substantial memory and disk space because assets are assembled into a local TAR archive.
+- Fab may change its private APIs or asset formats without notice, which can temporarily break this extension.
+- This fork accepts the custom-field v3 manifests used by UE 5.8-era builds and handles CDN chunks whose served size differs from the manifest's recorded compressed size. Older builds without this fix fail with `Unsupported custom-field data version 3` or a chunk-size error.
 
-1. 首先在 Fab 官网登录。
-2. 点击扩展图标，再点击 **Login with Epic Games**。
-3. 登录完成后，点击 **Open Library**。
-4. 在 Library 中找到资产并选择需要的版本。
-5. 点击下载，并允许扩展写入你选择的本地目录。
-6. 下载结果是一个 `.tar` 文件，请自行检查并解压。
+## Fork and Upstream
+
+This is a fork of [SkylakeOfficial/fab-chrome-extension](https://github.com/SkylakeOfficial/fab-chrome-extension). It includes our upstream [English README PR](https://github.com/SkylakeOfficial/fab-chrome-extension/pull/1) and [UE 5.8 compatibility PR](https://github.com/SkylakeOfficial/fab-chrome-extension/pull/2).
+
+## Disclaimer
+
+This is an unofficial, vibe-coded, low-maintenance project. It is not affiliated with Epic Games or Fab, and continued updates, compatibility, and support are not guaranteed. Use it at your own risk. Only download content you are entitled to access; you are responsible for your account, data, licences, compliance with platform terms, and local files. For implementation details, see [SPECS.md](SPECS.md).
 
 ## License
 
